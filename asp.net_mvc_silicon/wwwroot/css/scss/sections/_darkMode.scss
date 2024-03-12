@@ -1,0 +1,59 @@
+﻿.dark-mode {
+    background: $gray-900 !important;
+    color: $gray-100;
+
+    h1 {
+        color: $gray-100 !important;
+    }
+
+    h2 {
+        color: $gray-100;
+    }
+
+    h3 {
+        color: $gray-100;
+    }
+
+    h4 {
+        color: $gray-100;
+    }
+
+    h5 {
+        color: $gray-100 !important;
+    }
+
+    d4 {
+        color: $gray-100;
+    }
+
+    p {
+        color: $gray-600 !important;
+    }
+
+    img {
+        background-color: transparent !important;
+    }
+
+    .box {
+
+
+        &:hover {
+            background-color: $gray-700 !important;
+        }
+    }
+
+    #features {
+        background: $gray-900 !important;
+    }
+
+    input {
+        background-color: $gray-800;
+        border: 1px solid $gray-700;
+    }
+
+    .input-group{
+        span {
+            color: $gray-600;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+header {
+    padding: 15px 0;
+    position: relative;
+
+    .container {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "logo mobile";
+        gap: 40px;
+
+        .hide {
+            display: none;
+        }
+
+        @include lg {
+            grid-template-columns: auto 1fr auto auto;
+            grid-template-areas: "logo menu switch buttons";
+        }
+
+        #logo {
+            grid-area: logo;
+            z-index: 30;
+        }
+
+        #menu {
+            grid-area: menu;
+            align-items: center;
+
+
+
+            @include lg {
+                display: flex;
+
+                .menu-link {
+                    padding: 15px;
+                }
+            }
+        }
+
+        .btn-switch {
+            grid-area: switch;
+            display: none;
+
+            @include lg {
+                display: block;
+            }
+        }
+
+        #account-buttons {
+            grid-area: buttons;
+            gap: 15px;
+
+
+
+            @include lg {
+                display: flex;
+            }
+        }
+
+        .btn-mobilemenu {
+            grid-area: mobile;
+            display: block;
+            
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}

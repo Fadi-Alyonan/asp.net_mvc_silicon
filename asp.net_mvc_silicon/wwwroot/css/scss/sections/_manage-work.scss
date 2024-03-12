@@ -1,0 +1,29 @@
+﻿#manage-work {
+    padding: 80px 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        
+
+        .content {
+            display: grid;
+            margin: 70px;
+            
+            p {
+
+                @include text-m;
+                margin-bottom: 30px;
+                
+                img {
+                    margin-right: 5px;
+                }
+            }
+
+            .btn-theme-s {
+                margin: 0 55% 40% 0;
+                
+            }
+        }
+    }
+}

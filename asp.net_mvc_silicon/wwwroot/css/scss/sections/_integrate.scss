@@ -1,0 +1,49 @@
+﻿#integrate-tools {
+    padding: 80px 0;
+
+
+    .container {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+
+        .integrate-text {
+
+            @include lg {
+                padding: 0 20%;
+            }
+        }
+
+        .tool-integrate {
+            margin-top: 20px;
+            display: grid;
+
+            @include lg {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .box {
+                padding: 20px;
+
+
+                &:hover {
+                    border: 1px solid $gray-300;
+                    transition: all 0.15s ease-in-out;
+                    cursor: pointer;
+                    background-color: #ffffff;
+                    @include shadow-m
+                }
+
+                img {
+                    padding: 10px;
+                    margin: 20px;
+                    border-radius: 8px;
+                }
+
+                p {
+                    @include text-m;
+                }
+            }
+        }
+    }
+}
