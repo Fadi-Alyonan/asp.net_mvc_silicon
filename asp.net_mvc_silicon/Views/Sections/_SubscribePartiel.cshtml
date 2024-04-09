@@ -1,0 +1,76 @@
+﻿@model SubscribeViewModel
+<section id="Subscribe">
+    <div class="container">
+        <div class="title">
+            <h2>Don't Want to Miss Anything?</h2>
+            <img src="~/images/arrows_subscribe_Partiel.svg" alt="" />
+        </div>
+        <form asp-action="Index" asp-controller="Home" method="post">
+            <div class="newsletter-options">
+                <h6>Sign up for Newsletters</h6>
+                <div class="options">
+                    <div class="checkbox-group">
+                        <input asp-for="DailyNewsletter" />
+                        <label asp-for="DailyNewsletter"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="AdvertisingUpdates" />
+                        <label asp-for="AdvertisingUpdates"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="WeekinReview" />
+                        <label asp-for="WeekinReview"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="EventUpdates" />
+                        <label asp-for="EventUpdates"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="StartupsWeekly" />
+                        <label asp-for="StartupsWeekly"></label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input asp-for="Podcasts" />
+                        <label asp-for="Podcasts"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input asp-for="Email"/>
+                <button class="btn-theme-s" type="submit">Subscribe *</button>
+            </div>
+        </form>
+        <span class="information">
+            @if (ViewData["status"]?.ToString() == "Success")
+            {
+                <span class="alert alert-success">
+                    You have been subscribed
+                </span>
+            }
+            else if (ViewData["status"]?.ToString() == "AlreadyExists")
+            {
+                <span class="alert alert-warning">
+                    You have already subscribed
+                </span>
+            }
+            else if (ViewData["status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unable to contact the server. Please try again later.
+                </span>
+            }
+            else if (ViewData["status"]?.ToString() == "Invalid")
+            {
+                <span class="alert alert-danger">
+                    You must enter an valid email address
+                </span>
+            }
+            else
+            {
+                <span class="alert">
+                    * Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.
+                </span>
+            }
+        </span>
+    </div>
+</section>

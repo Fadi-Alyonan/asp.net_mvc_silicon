@@ -462,35 +462,50 @@ form textarea::placeholder {
 
 header {
   padding: 15px 0;
-  position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 header .container {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr auto;
   grid-template-areas: "logo mobile";
-  gap: 40px;
+  grid-template-rows: auto 1fr 1fr 1fr;
 }
 header .container .hide {
   display: none;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   header .container {
     grid-template-columns: auto 1fr auto auto;
     grid-template-areas: "logo menu switch buttons";
+    width: auto;
+    height: auto;
   }
 }
 header .container #logo {
   grid-area: logo;
-  z-index: 30;
+  grid-row: 1;
+  padding: 0 50px 0 0;
 }
 header .container #menu {
   grid-area: menu;
   align-items: center;
+  grid-row: 2;
 }
-@media (min-width: 992px) {
+header .container #menu nav {
+  justify-content: center;
+  display: grid;
+  gap: 30px;
+}
+@media (min-width: 1200px) {
   header .container #menu {
     display: flex;
+    grid-row: 1;
+  }
+  header .container #menu nav {
+    display: flex;
+    gap: 0px;
   }
   header .container #menu .menu-link {
     padding: 15px;
@@ -500,25 +515,39 @@ header .container .btn-switch {
   grid-area: switch;
   display: none;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   header .container .btn-switch {
+    margin: 10px;
     display: block;
+    grid-row: 1;
   }
 }
 header .container #account-buttons {
+  align-items: center;
   grid-area: buttons;
+  grid-row: 3;
   gap: 15px;
 }
-@media (min-width: 992px) {
+header .container #account-buttons div {
+  display: flex;
+  gap: 15px;
+}
+@media (min-width: 1200px) {
   header .container #account-buttons {
     display: flex;
+    grid-row: 1;
   }
 }
 header .container .btn-mobilemenu {
   grid-area: mobile;
+  grid-row: 1;
   display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   header .container .btn-mobilemenu {
     display: none;
   }
@@ -532,6 +561,7 @@ footer {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
   color: #9397AD;
+  max-width: 100%;
 }
 footer .container {
   text-align: center;
@@ -547,8 +577,9 @@ footer .container .social-media {
 #showcase {
   position: relative;
   margin-bottom: 80px;
+  max-width: 100%;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase {
     display: flex;
     justify-content: flex-end;
@@ -560,16 +591,16 @@ footer .container .social-media {
   z-index: -1;
   width: 100%;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .background-image {
     width: 45%;
     height: 100%;
   }
 }
 #showcase .container {
-  height: 100%;
+  width: 100%;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .container {
     position: absolute;
     left: 0;
@@ -581,7 +612,7 @@ footer .container .social-media {
   width: 100%;
   text-align: center;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .container .content {
     margin-top: 100px;
     width: 40%;
@@ -616,7 +647,7 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .container .content p {
     margin: 40px 0 50px 0;
     line-height: 160%;
@@ -633,7 +664,7 @@ footer .container .social-media {
   margin: 150px 0 30px 0;
   display: none;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .container .content h6 {
     margin: 100px 0 30px 0;
     display: flex;
@@ -643,7 +674,7 @@ footer .container .social-media {
   display: none;
   gap: 30px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #showcase .container .content .brands {
     display: flex;
   }
@@ -655,6 +686,7 @@ footer .container .social-media {
 #features {
   background-color: #F3F6FF;
   padding: 80px 0;
+  max-width: 100%;
 }
 #features .container {
   display: grid;
@@ -956,7 +988,13 @@ footer .container .social-media {
 }
 
 #integrate-tools {
-  padding: 80px 0;
+  padding: 0;
+  max-width: 100%;
+}
+@media (min-width: 992px) {
+  #integrate-tools {
+    padding: 80px 0;
+  }
 }
 #integrate-tools .container {
   display: grid;
@@ -1001,15 +1039,30 @@ footer .container .social-media {
 }
 
 #manage-work {
-  padding: 80px 0;
+  padding: 0;
+}
+@media (min-width: 1200px) {
+  #manage-work {
+    padding: 80px 0;
+  }
 }
 #manage-work .container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+#manage-work .container img {
+  max-width: 100%;
+}
+@media (min-width: 1200px) {
+  #manage-work .container {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 #manage-work .container .content {
   display: grid;
-  margin: 70px;
+  margin: 0px;
 }
 #manage-work .container .content p {
   line-height: 160%;
@@ -1024,6 +1077,11 @@ footer .container .social-media {
 }
 #manage-work .container .content .btn-theme-s {
   margin: 0 55% 40% 0;
+}
+@media (min-width: 1200px) {
+  #manage-work .container .content {
+    margin: 70px;
+  }
 }
 
 .dark-mode {
@@ -1064,6 +1122,205 @@ footer .container .social-media {
   background-color: #33354D;
   border: 1px solid #565973;
 }
-.dark-mode .input-group span {
-  color: #9397AD;
+
+#courses .all-courses {
+  display: grid;
+}
+@media (min-width: 992px) {
+  #courses .all-courses {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+#courses .all-courses .course {
+  position: relative;
+  margin: 10px;
+  border: 1px solid #EFF2FC;
+  border-radius: 7px;
+}
+#courses .all-courses .course .best-seller {
+  background-color: forestgreen;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+#courses .all-courses .course .course-image {
+  width: 100%;
+}
+#courses .all-courses .course .content {
+  padding: 15px;
+}
+#courses .all-courses .course .content .course-title {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+}
+#courses .all-courses .course .content .course-prices {
+  border-bottom: 1px solid #E2E5F1;
+  color: lawngreen;
+  display: flex;
+  gap: 10px;
+}
+#courses .all-courses .course .content .course-prices .discount-price {
+  color: red;
+}
+#courses .all-courses .course .content .course-prices .original-price {
+  color: lightgray;
+  text-decoration: line-through;
+}
+#courses .all-courses .course .content .course-footer {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#job-offer-courses-page .container {
+  display: flex;
+  background-color: #F3F6FF;
+  margin-top: 30px;
+}
+#job-offer-courses-page .container div img {
+  display: none;
+}
+@media (min-width: 992px) {
+  #job-offer-courses-page .container div img {
+    display: block;
+  }
+}
+#job-offer-courses-page .container .content {
+  margin: 6%;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  #job-offer-courses-page .container .content {
+    text-align: start;
+  }
+}
+#job-offer-courses-page .container .content h1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+#job-offer-courses-page .container .content h1 span {
+  color: #6366F1;
+}
+#job-offer-courses-page .container .content p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+@media (min-width: 1200px) {
+  #job-offer-courses-page .container .content p {
+    line-height: 160%;
+    font-weight: 400;
+    color: #565973;
+    font-family: "Manrope", sans-serif;
+    font-size: 18px !important;
+  }
+}
+#job-offer-courses-page .container .content .btn-theme-s {
+  display: inline-block;
+}
+
+#Subscribe {
+  background-color: #F3F6FF;
+}
+@media (min-width: 992px) {
+  #Subscribe {
+    padding: 60px 30%;
+  }
+}
+#Subscribe .container {
+  display: grid;
+}
+@media (min-width: 992px) {
+  #Subscribe .container {
+    display: grid;
+  }
+}
+#Subscribe .container .title {
+  display: flex;
+}
+#Subscribe .container .title h2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+@media (min-width: 992px) {
+  #Subscribe .container .title h2 {
+    line-height: 160%;
+    font-weight: 400;
+    color: #565973;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    color: #0B0F19;
+    font-size: 40px !important;
+  }
+}
+#Subscribe .container .title img {
+  max-width: 100%;
+}
+#Subscribe .container .newsletter-options {
+  display: grid;
+}
+@media (min-width: 992px) {
+  #Subscribe .container .newsletter-options {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 30px 0;
+  }
+}
+#Subscribe .container .newsletter-options h6 {
+  padding-right: 25px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+}
+#Subscribe .container .newsletter-options .options {
+  display: grid;
+}
+@media (min-width: 992px) {
+  #Subscribe .container .newsletter-options .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+#Subscribe .container .input-group {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+@media (min-width: 992px) {
+  #Subscribe .container .input-group {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+#Subscribe .container .input-group .btn-theme-s {
+  border-radius: 9px;
+}
+#Subscribe .container .information {
+  margin: 25px 0;
 }

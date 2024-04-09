@@ -1,0 +1,67 @@
+﻿#courses {
+    .all-courses {
+        display: grid;
+
+
+        @include lg {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .course {
+            position: relative;
+            margin: 10px;
+            border: 1px solid $gray-200;
+            border-radius: 7px;
+            
+
+
+            .best-seller {
+                background-color: forestgreen;
+                color: white;
+                padding: 3px 5px;
+                border-radius: 5px;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            .course-image {
+                width: 100%;
+            }
+
+            .content {
+                padding: 15px;
+
+                .course-title {
+                    @include h5;
+                }
+
+                .course-auther {
+                }
+
+                .course-prices {
+                    border-bottom: 1px solid $gray-300;
+                    color: lawngreen;
+                    display: flex;
+                    gap: 10px;
+
+                    .discount-price {
+                        color: red;
+                    }
+
+                    .original-price {
+                        color: lightgray;
+                        text-decoration: line-through;
+                    }
+                }
+
+                .course-footer {
+                    margin: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}

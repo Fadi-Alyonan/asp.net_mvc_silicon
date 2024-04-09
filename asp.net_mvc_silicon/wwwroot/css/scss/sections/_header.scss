@@ -1,36 +1,56 @@
 header {
     padding: 15px 0;
-    position: relative;
+    width: 100%;
+    max-width:100%;
 
     .container {
         display: grid;
         align-items: center;
         grid-template-columns: 1fr auto;
         grid-template-areas: "logo mobile";
-        gap: 40px;
+        grid-template-rows: auto 1fr 1fr 1fr;
+        
+
 
         .hide {
             display: none;
         }
 
-        @include lg {
+        @include xl {
             grid-template-columns: auto 1fr auto auto;
             grid-template-areas: "logo menu switch buttons";
+            width: auto;
+            height: auto;
         }
 
         #logo {
             grid-area: logo;
-            z-index: 30;
+            grid-row: 1;
+            
+            padding: 0 50px 0 0;
         }
 
         #menu {
             grid-area: menu;
             align-items: center;
+            grid-row: 2;
 
 
+            nav {
+                justify-content: center;
+                display: grid;
+                gap: 30px;
+            }
 
-            @include lg {
+
+            @include xl {
                 display: flex;
+                grid-row: 1;
+
+                nav {
+                    display: flex;
+                    gap: 0px;
+                }
 
                 .menu-link {
                     padding: 15px;
@@ -42,27 +62,42 @@ header {
             grid-area: switch;
             display: none;
 
-            @include lg {
+            @include xl {
+                margin: 10px;
                 display: block;
+                grid-row: 1;
             }
         }
 
         #account-buttons {
+            align-items: center;
             grid-area: buttons;
+            grid-row: 3;
             gap: 15px;
 
 
-
-            @include lg {
+            div {
                 display: flex;
+                gap: 15px;
+            }
+
+
+            @include xl {
+                display: flex;
+                grid-row: 1;
             }
         }
 
         .btn-mobilemenu {
             grid-area: mobile;
+            grid-row: 1;
             display: block;
-            
-            @include lg {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            z-index:1;
+
+            @include xl {
                 display: none;
             }
         }

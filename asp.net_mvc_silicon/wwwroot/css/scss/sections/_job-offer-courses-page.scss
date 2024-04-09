@@ -1,0 +1,48 @@
+﻿#job-offer-courses-page {
+
+
+    .container {
+        display: flex;
+        background-color: $gray-100;
+        margin-top:30px;
+        div {
+            img {
+                display: none;
+
+                @include lg {
+                    display: block;
+                }
+            }
+        }
+
+        .content {
+            margin: 6%;
+            align-items: center;
+            text-align: center;
+
+            @include lg {
+                text-align: start;
+            }
+
+            h1 {
+                @include h2;
+
+                span {
+                    color: #6366F1;
+                }
+            }
+
+            p {
+                @include text-m;
+
+                @include xl {
+                    @include text-lg;
+                }
+            }
+
+            .btn-theme-s {
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+﻿@model CoursesListViewModel
+@{
+    ViewData["Title"] = "Courses";
+}
+<section id="courses">
+    <div class="container">
+        <div><h1 class="d6">Courses</h1></div>
+        <div class="all-courses">
+            @if (Model.Courses != null)
+            {
+                @foreach (var item in Model.Courses)
+                {
+                    <div class="course">
+                        @if (item.IsBestseller)
+                        {
+                            <div class="best-seller text-s">Best Seller</div>
+                        }
+                        <img class="course-image" src="~/images/@item.Image" alt="@item.Image" />
+                        <div class="content">
+                            <div><h5 class="course-title text-lead">@item.Title   </h5></div>
+                            <div class="course-auther text-s">@item.Author</div>
+                            <div class="course-prices">
+                                @if (item.DiscountPrice != null && item.DiscountPrice.ToString() != "0")
+                                {
+                                    <div class="discount-price">@item.DiscountPrice</div>
+                                    <div class="original-price">@item.OriginalPrice</div>
+
+                                }else{
+                                    <div>@item.OriginalPrice</div>
+                                }
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-hours"><i class="fa-regular fa-clock"></i> @item.Hours hours</div>
+                                <div class="course-likes">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    @($"{item.LikesInProcent}% ({item.NumberOfLikes})")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div><h1 class="d6">Courses</h1></div>
+                <h2>No courses found</h2>
+
+            }
+        </div>
+    </div>
+</section>
+<section id="job-offer-courses-page">
+    <div class="container">
+        <div class="content">
+            <p>Ready to get started?</p>
+            <h1>Take Your <span>Skills</span> to the Next Level</h1>
+            <a class="btn-theme-s" href="#">Work with us</a>
+        </div>
+        <div><img src="~/images/illustration_Courses.svg" alt="illustration Image" /></div>
+    </div>
+</section>

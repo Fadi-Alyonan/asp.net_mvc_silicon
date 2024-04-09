@@ -1,20 +1,33 @@
 ﻿#manage-work {
-    padding: 80px 0;
+    padding: 0;
+
+    @include xl {
+        padding: 80px 0;
+    }
 
     .container {
-        display: flex;
-        justify-content: space-between;
-        
+        display: grid;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-width: 100%
+        }
+
+        @include xl {
+            display: flex;
+            justify-content: space-between;
+        }
 
         .content {
             display: grid;
-            margin: 70px;
-            
+            margin: 0px;
+
             p {
 
                 @include text-m;
                 margin-bottom: 30px;
-                
+
                 img {
                     margin-right: 5px;
                 }
@@ -22,7 +35,10 @@
 
             .btn-theme-s {
                 margin: 0 55% 40% 0;
-                
+            }
+
+            @include xl {
+                margin: 70px;
             }
         }
     }
