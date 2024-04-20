@@ -41,7 +41,7 @@ public class HomeController(HttpClient httpClient) : Controller
         {
             ViewData["status"] = "Invalid";
         }
-        return View();
+        return View(viewModel);
     }
 
 

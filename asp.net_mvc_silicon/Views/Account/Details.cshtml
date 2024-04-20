@@ -9,7 +9,7 @@
         <aside>
             <div class="profile-info">
                 <img src="~/images/profile_image.svg" alt="" />
-                <h5>@Model.basic.FirstName  @Model.basic.LastName</h5>
+                <h5>@Model.basic!.FirstName  @Model.basic.LastName</h5>
                 <p>@Model.basic.Email</p>
             </div>
             <nav>
@@ -31,27 +31,27 @@
                     <p>Basic Info</p>
                     <div class="content">
                         <div id="form-firstname" class="input-group">
-                            <label asp-for="basic.FirstName"></label>
-                            <span asp-validation-for="basic.FirstName"></span>
-                            <input asp-for="basic.FirstName" />
+                            <label asp-for="basic!.FirstName"></label>
+                            <span asp-validation-for="basic!.FirstName"></span>
+                            <input asp-for="basic!.FirstName" />
                         </div>
                         <div id="form-lastname" class="input-group">
-                            <label asp-for="basic.LastName"></label>
-                            <span asp-validation-for="basic.LastName"></span>
-                            <input asp-for="basic.LastName" />
+                            <label asp-for="basic!.LastName"></label>
+                            <span asp-validation-for="basic!.LastName"></span>
+                            <input asp-for="basic!.LastName" />
                         </div>
                         <div id="form-email" class="input-group">
-                            <label asp-for="basic.Email"></label>
-                            <span asp-validation-for="basic.Email"></span>
-                            <input asp-for="basic.Email" />
+                            <label asp-for="basic!.Email"></label>
+                            <span asp-validation-for="basic!.Email"></span>
+                            <input asp-for="basic!.Email" />
                         </div>
                         <div id="form-phone" class="input-group">
-                            <label asp-for="basic.PhoneNumber"></label>
-                            <input asp-for="basic.PhoneNumber" />
+                            <label asp-for="basic!.PhoneNumber"></label>
+                            <input asp-for="basic!.PhoneNumber" />
                         </div>
                         <div id="form-bio" class="input-group">
-                            <label asp-for="basic.Biography"></label>
-                            <textarea asp-for="basic.Biography"></textarea>
+                            <label asp-for="basic!.Biography"></label>
+                            <textarea asp-for="basic!.Biography"></textarea>
                         </div>
                         <div id="form-buttons">
                             <button class="btn-gray" asp-controller="Account" asp-action="Details">Cancel</button>
@@ -74,23 +74,23 @@
                     <h2>Address</h2>
                     <div class="content">
                         <div id="form-address1" class="input-group">
-                            <label asp-for="address.AddressLine1"></label>
-                            <span asp-validation-for="address.AddressLine1"></span>
-                            <input asp-for="address.AddressLine1" />
+                            <label asp-for="address!.AddressLine1"></label>
+                            <span asp-validation-for="address!.AddressLine1"></span>
+                            <input asp-for="address!.AddressLine1" />
                         </div>
                         <div id="form-address2" class="input-group">
-                            <label asp-for="address.AddressLine2"></label>
-                            <input asp-for="address.AddressLine2" />
+                            <label asp-for="address!.AddressLine2"></label>
+                            <input asp-for="address!.AddressLine2" />
                         </div>
                         <div id="form-postalcode" class="input-group">
-                            <label asp-for="address.PostalCode"></label>
-                            <span asp-validation-for="address.PostalCode"></span>
-                            <input asp-for="address.PostalCode" />
+                            <label asp-for="address!.PostalCode"></label>
+                            <span asp-validation-for="address!.PostalCode"></span>
+                            <input asp-for="address!.PostalCode" />
                         </div>
                         <div id="form-city" class="input-group">
-                            <label asp-for="address.City"></label>
-                            <span asp-validation-for="address.City"></span>
-                            <input asp-for="address.City" />
+                            <label asp-for="address!.City"></label>
+                            <span asp-validation-for="address!.City"></span>
+                            <input asp-for="address!.City" />
                         </div>
                         <div id="form-buttons">
                             <button class="btn-gray" asp-controller="Account" asp-action="Details">Cancel</button>

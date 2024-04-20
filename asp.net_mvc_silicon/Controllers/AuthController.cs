@@ -3,6 +3,7 @@ using Infrastructure.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace asp.net_mvc_silicon.Controllers;
 
@@ -14,77 +15,97 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpGet]
     public IActionResult SignUp()
     {
-        if (_signInManager.IsSignedIn(User))
-        {
-            return RedirectToAction("Details", "Account");
-        }
         var viewModel = new SignUpViewModel();
+        try
+        {
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Details", "Account");
+            }
+            
+            return View(viewModel);
+        }
+        catch (Exception ex) { Debug.WriteLine(ex); }
         return View(viewModel);
     }
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
-        if (ModelState.IsValid)
+        try
         {
-            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
-            if (exists)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("AlreadyExists", "User with the same email already exists");
-                ViewData["ErrorMassage"] = "User with the same email already exists try to login";
-                return View(viewModel);
+                var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
+                if (exists)
+                {
+                    ModelState.AddModelError("AlreadyExists", "User with the same email already exists");
+                    ViewData["ErrorMassage"] = "User with the same email already exists try to login";
+                    return View(viewModel);
+                }
+
+                var userEntity = new UserEntity
+                {
+                    FirstName = viewModel.Form.FirstName,
+                    LastName = viewModel.Form.LastName,
+                    Email = viewModel.Form.Email,
+                    UserName = viewModel.Form.Email
+                };
+
+                var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("SignIn", "Auth");
+                }
             }
 
-            var userEntity = new UserEntity
-            {
-                FirstName = viewModel.Form.FirstName,
-                LastName = viewModel.Form.LastName,
-                Email = viewModel.Form.Email,
-                UserName = viewModel.Form.Email
-            };
-
-            var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("SignIn", "Auth");
-            }
+            return View(viewModel);
         }
-        
+        catch (Exception ex) { Debug.WriteLine(ex); }
         return View(viewModel);
     }
 
     [HttpGet]
     public IActionResult SignIn()
     {
-        
         var viewModel = new SignInViewModel();
         return View(viewModel);
     }
     [HttpPost]
     public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
-        if (ModelState.IsValid)
+        try
         {
-            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false); 
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Details","Account");
+                var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Details", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("IncorrectValues", "Incorrect email ro password");
+                    ViewData["ErrorMassage"] = "Incorrect email ro password";
+                }
+                return View(viewModel);
             }
-            else
-            {
-                ModelState.AddModelError("IncorrectValues", "Incorrect email ro password");
-                ViewData["ErrorMassage"] = "Incorrect email ro password";
-            }
+            ModelState.AddModelError("IncorrectValues", "Incorrect email ro password");
+            ViewData["ErrorMassage"] = "Incorrect email ro password";
             return View(viewModel);
         }
-        ModelState.AddModelError("IncorrectValues", "Incorrect email ro password");
-        ViewData["ErrorMassage"] = "Incorrect email ro password";
+        catch (Exception ex) { Debug.WriteLine(ex); }
         return View(viewModel);
     }
 
     [HttpGet]
     public new async Task<IActionResult> SignOut()
     {
-        await _signInManager.SignOutAsync();
+        try
+        {
+            await _signInManager.SignOutAsync();
+        }
+        catch (Exception ex) { Debug.WriteLine(ex); }
+
         return RedirectToAction("Index", "Home");
     }
 }
